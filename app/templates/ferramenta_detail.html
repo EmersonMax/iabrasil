@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-fluid" src="{{ ferramenta.foto_url_1 }}" alt="{{ ferramenta.nome_ferramenta }}">
+        </div>
+        <div class="col-md-6">
+            <h2 class="fw-bolder">{{ ferramenta.nome_ferramenta }}</h2>
+            <div class="badge bg-dark text-white">{{ ferramenta.categoria }}</div>
+            <p class="lead">{{ ferramenta.descricao_curta }}</p>
+            <p>{{ ferramenta.descricao_longa }}</p>
+            <div class="d-flex">
+                <div class="me-3"><i class="fa-regular fa-thumbs-up"></i> {{ ferramenta.curtidas }}</div>
+                <div><i class="fa-regular fa-thumbs-down"></i> 0</div>
+            </div>
+            <div class="mt-4">
+                <a class="btn btn-outline-dark" href="{{ ferramenta.site_url }}" target="_blank">Visitar Site</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

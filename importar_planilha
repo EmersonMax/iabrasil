@@ -1,0 +1,16 @@
+import pandas as pd
+from django.apps import apps
+from app.models import Ferramentas
+
+def importar_planilha(caminho_da_planilha):
+    # Leitura da planilha
+    dados = pd.read_excel(caminho_da_planilha)
+
+    # Loop pelos dados e criação de instâncias de modelo
+    for index, linha in dados.iterrows():
+        instancia = Ferramentas(origem=linha['ORIGEM'], data=linha['Date'],)
+        instancia.save()
+
+# Exemplo de chamada da função de importação
+caminho_da_planilha = 'ia.xlsx'
+importar_planilha(caminho_da_planilha)

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<div class="container">
+    <h1>Categorias</h1>
+    
+    <ul style=" list-style: none;
+    padding: 0;
+    margin: 0;">
+        {% for categoria in categorias_distintas %}
+            <li style="margin: 10px 0;"><a style=" display: inline-block;
+                padding: 10px 20px;
+                background-color: transparent;
+                color: #121212;
+                text-decoration: none;
+                border-radius: 20px;
+                transition: background-color 0.3s, color 0.3s;
+               " href="{% url 'categoria_view' categoria %}">{{ categoria }}</a></li>
+        {% endfor %}
+    </ul> 
+</div>
+{% endblock %}

@@ -77,7 +77,6 @@ def importar_planilha(request):
 
 def search_view(request):
     query = request.GET.get('q')  # Obtém o valor do parâmetro de consulta 'q' da URL
-    print(query)
     categorias_distintas = Ferramentas.objects.values_list('categoria', flat=True).distinct()
     if query:
         # Realiza a pesquisa nos campos relevantes usando a cláusula Q para combinar múltiplos campos

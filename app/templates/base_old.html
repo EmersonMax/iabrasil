@@ -1,0 +1,679 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>IAbrasil</title>
+        <!-- Favicon-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+        <!-- Font Awesome Icons -->
+       <script src="https://kit.fontawesome.com/1289cf88d7.js" crossorigin="anonymous"></script>
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+       <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+       <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+        <style>
+        .imgLogo {
+            width: 80px; /* Ajuste a largura conforme necessário */
+            height: auto; /* Mantém a proporção da imagem */
+            /* Espaçamento entre o ícone e o texto (opcional) */
+        }
+        .typewriter p {
+        overflow: hidden; /* Ensures the content is not revealed until the animation */
+        border-right: .15em solid orange; /* The typwriter cursor */
+        white-space: nowrap; /* Keeps the content on a single line */
+        margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+        letter-spacing: .10em; /* Adjust as needed */
+        animation: 
+            typing 3.5s steps(40, end),
+            blink-caret .75s step-end infinite;
+        }
+
+        /* The typing effect */
+        @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+        }
+
+        /* The typewriter cursor effect */
+        @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: #072130; }
+        }
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: #072130; /* Cor de fundo */
+    border: 2px solid #12ebaa;
+    border-radius: 40px; /* Borda mais arredondada */
+    padding: 2px; /* Aumento do espaçamento interno */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra mais pronunciada */
+    margin-top:-95px;
+   
+}
+.search-input {
+    border: none;
+    padding: 2px;
+    font-size: 16px;
+    width: 100%;
+    background: linear-gradient(45deg, #072130, #12ebaa);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); /* Fundo transparente */
+    outline: none; /* Remove a borda quando focado */
+    color: white; /* Cor do texto */
+    border-radius: 8px; /* Borda arredondada */
+    
+}
+.search-input::placeholder {
+    color: white; /* Definir a cor do texto do placeholder */
+    text-align: center; /* Alinhar o texto do placeholder ao centro */
+    font-size:18px;
+}
+
+.search-button {
+    background-color: transparent;
+    border: none;
+    border-radius: 8px; /* Borda arredondada */
+    padding: 10px 20px; /* Ajuste do espaçamento */
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.search-button img {
+    width: 16px;
+    height: 16px;
+    filter: invert(1);
+    margin-right: 8px; /* Espaçamento entre ícone e texto */
+}
+
+.search-button:hover {
+    background-color: #072130;
+}
+
+/* Estilizar o ícone de pesquisa */
+.search-icon {
+    font-size: 18px;
+    color: #12ebaa;
+}
+
+ /* Estilos para os itens de navegação */
+ .navbar-nav .nav-link {
+        color: #12ebaa; /* Cor padrão */
+        transition: color 0.3s; /* Transição suave da cor ao passar o mouse */
+        position: relative; /* Para posicionar a sombra */
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: #12ebaa !important; /* Altera a cor ao passar o mouse */
+    }
+
+    /* Adiciona uma borda de baixo com sombra */
+    .navbar-nav .nav-link::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 2px; /* Altura da borda */
+        background-color: #12ebaa;
+        position: absolute;
+        bottom: -4px; /* Posiciona abaixo do texto */
+        left: 0;
+        opacity: 0; /* Começa invisível */
+        transform: scaleX(0); /* Começa sem largura */
+        transition: transform 0.3s, opacity 0.3s;
+        transform-origin: center center;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+    }
+
+    .navbar-nav .nav-link:hover::after {
+        opacity: 1; /* Mostra a borda */
+        transform: scaleX(1); /* Amplia a largura */
+    }
+
+    /* Estilos para a navbar fixa */
+    .navbar.fixed-top {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000; /* Ajuste a camada conforme necessário */
+        color:grey;
+        background: linear-gradient(180deg, #fff,white);
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+       
+    }
+
+    /* Estilos para evitar que o conteúdo fique oculto sob a navbar */
+    body {
+        padding-top: 75px; /* Altura da navbar */
+        position: relative;
+        background-color:#fff;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Aumenta o espaçamento entre as palavras do li */
+    .navbar-nav .nav-item {
+        margin-right: 20px; /* Ajuste o valor conforme necessário */
+        color:#333
+    }
+    .social-icons {
+        margin-bottom: 10px; /* Espaçamento abaixo dos ícones */
+    }
+
+    .social-icon {
+        font-size: 24px;
+        margin: 0 10px;
+        color: #072130; /* Cor dos ícones */
+        transition: color 0.3s;
+    }
+
+    .social-icon:hover {
+        color: #072130; /* Cor dos ícones ao passar o mouse */
+    }
+.categories-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    padding: 20px 10;
+}
+
+.categories-navbar .btn {
+    margin: 0.2rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.categories-navbar .btn:hover {
+    background-color: #12ebaa;
+    color: white;
+}
+
+.categories-navbar .navbar-toggler {
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    padding: 0;
+}
+.overflow-container {
+    overflow-x: auto;
+    width: 100%;
+    height: 100%;
+    white-space: nowrap;
+}
+
+
+
+.nav-link-categories {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    color: #072130;
+    transition: background-color 0.3s, color 0.3s;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    margin: 2px;
+    cursor: pointer;
+    
+}
+.navbar-nav_caetgories .nav-link_categories {
+    align-items: center;
+    justify-content: center;
+    border: none;
+    margin: 2px;
+    color: #072130;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: transparent;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    margin: 2px;
+    cursor: pointer;
+   
+}
+
+.navbar-nav_caetgories .nav-link_categories:hover {
+    background-color: transparent;
+    color: #12ebaa;
+    border-color: #12ebaa;
+    opacity: 1;
+    transform: scale(1.1); /* Amplia um pouco a categoria */
+    font-size: 18px; /* Aumenta o tamanho da fonte */
+    bottom: -4px;
+    left: 0;
+    text-decoration: none;
+    
+}
+
+
+
+
+
+.move-categories {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: none;
+    border:none;
+    background-color: transparent;
+    transition: background-color 0.3s;
+    
+    color: #12ebaa;
+    font-size: 24px;
+}
+
+.move-categories:hover {
+    background-color: #072130;
+    color: #fff;
+    border-radius: 50%;
+}   
+.move-categories:after {
+    background-color: #072130;
+    color: #fff;
+    border-radius: 50%;
+}   
+.center-button {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .center-button .btn {
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .center-button .btn:hover {
+        background-color: #12ebaa;
+        color: white;
+    } 
+
+.navbar_cat {
+    background-color: #333;
+    color: white;
+    overflow: hidden;
+}
+
+.menu_cat {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.menu_cat li {
+    padding: 10px;
+}
+
+.menu_cat a {
+    text-decoration: none;
+    color: white;
+}
+
+.menu_cat a:hover {
+    text-decoration: underline;
+}
+.category-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    max-width: auto; /* Ajuste a largura máxima conforme necessário */
+    margin: 0 auto;
+}
+
+.category-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+.category-item {
+    padding: 10px;
+    margin: 0 5px;
+    background-color: transparent;
+    border: 1px solid white;
+    color:white;
+    border-radius: 16px;
+    font-size:10px;
+}
+
+.category-control {
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    background-color: transparent;
+    color: white;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color:#12ebaa
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+/* Centralize horizontalmente e verticalmente o contêiner pai */
+.button-container {
+    display: flex;
+    justify-content: center; /* Centralize horizontalmente */
+    align-items: center; /* Centralize verticalmente */
+    margin: 5px auto; /* Centralize horizontalmente e adicione margem vertical */
+    max-width: 100%; /* Responsivo - Largura máxima */
+}
+
+.button {
+    background-color: #072130;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adicione uma sombra suave */
+    margin: 10px; /* Adicione margem entre as divs */
+}
+
+.menu-container {
+    display: flex;
+    align-items: center;
+    background-color: #072130;
+    padding: 10px;
+}
+
+.menu-list {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-list li {
+    margin-right: 20px;
+    margin-left:20px;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.menu-list li i {
+    margin-right: 5px;
+}
+
+.menu-list li:hover {
+    color: #12ebaa;
+}
+
+.order-select {
+    margin-left: auto;
+    color: white;
+}
+
+label {
+    margin-right: 5px;
+}
+
+select {
+    background-color: #072130;
+    color: white;
+    border: none 1x black;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .button-container {
+        flex-direction: column; /* Empilhe verticalmente em telas menores */
+        text-align: center; /* Centralize o texto */
+    }
+
+    .button {
+        margin: 10px 0; /* Adicione margem vertical entre as divs */
+    }
+}
+
+.button:hover {
+    background-color: #12ebaa;
+    color: white;
+}
+@media (max-width: 768px) {
+    .menuC-at {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .menu_cat.active {
+        display: flex;
+    }
+}
+</style>
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">Logo</a>
+                <!-- Ícone de menu para telas móveis -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Itens da Navbar -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Item 1</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Item 2</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Item 3</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Header-->
+        <header class="py-2">
+            <div >
+                <div class="text-center text-white">
+                   
+
+                    
+                    <h1 class="lead fw-normal"  style=" color:white; font-size:32px"> <span style="font-size:32px">ia</span><span style="color:#12ebaa;font-size:32px">Brasil</span></a> Ferramentas de Inteligência Artificial</h1>
+                    <h1 class="lead fw-normal"  style=" color:white; font-size:28px"> O Guia definitivo com <span style="color:#12ebaa;font-size:28px">14.467 Ferramentas de IA</span> para você</h1>
+                </div>
+                </div>
+            </div>
+        </header>
+        <!-- Section-->
+        <section class="py-5">
+
+            <div class="container px-4 px-lg-5 mt-5">
+                <form action="{% url 'search_view' %}" method="get">
+                <div class="search-container">
+                    <input  type="text" name="q" class="search-input" placeholder="Encontre Sua IA usando IA">
+                    <button class="search-button">
+                        <i class="material-icons"> search</i>
+                    </button>
+                </form>
+
+            </div>
+            <br>
+            <div class="button-container">
+                <div class="button" id="top10-button">  <i class="fa-solid fa-trophy text-warning"></i> Top 10 do Mês</div>
+                <div class="button" id="trends-button">  <i class="fa-solid fa-arrow-trend-up text-danger"></i> Tendências</div>
+                <div class="button" id="publish-button">  <i class="fa-solid fa-star text-warning"></i> Publique Aqui</div>
+            </div>
+           <!-- Barra de navegação de categorias -->
+           <br>
+         
+
+         <div class="category-container">
+            <div class="category-control left"><i class="material-icons">arrow_back</i></div>
+            <ul class="category-list">
+                {% for categoria in categorias_distintas %}
+                <li class="category-item"><a><b>{{ categoria }}</b></a></li>
+                {% endfor %}
+                
+                <!-- Adicione mais categorias conforme necessário -->
+            </ul>
+            <div class="category-control right"><i class="material-icons">arrow_forward</i></div>
+         </div>
+
+          
+         <br>
+      
+         <div class="menu-container">
+            <h3 class="text-light">Mais Curtidas: </h3>
+            <ul class="menu-list">
+                <li> <i class="fas fa-fire text-warning"></i> Mais Curtidas</li>
+                <li> <i class="fas fa-bolt text-warning"></i> Mais Recentes</li>
+                <li> <i class="fas fa-heart text-danger"></i> Favoritas</li>
+            </ul>
+            <div class="order-select">
+                <label for="order-select">Ordenar por:</label>
+                <select id="order-select">
+                    <option value="popularidade">Popularidade</option>
+                    <option value="data">Data</option>
+                    <option value="favoritas">Favoritas</option>
+                </select>
+            </div>
+         </div>
+         <!--
+         <div class="center-button">
+            <a class="navbar-toggler" href="{% url 'all_categories_view' %}">
+                <button class="btn btn-light btn-rounded rounded-pill">
+                    Vizualizar Todas Categorias
+                </button>
+            </a>
+         </div>
+         -->
+       
+            <br>
+            <br>
+                {% block content%}
+
+
+                
+                {% endblock %}
+                
+        </section>
+        <!-- Footer-->
+        <footer class="py-5" style="background-color: #12ebaa;" style ="margin-top:10px;position:absolute">
+            <div ><p class="m-0 text-center text-white">Copyright iaBrasil 2023</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'js/scripts.js' %}"></script>
+       
+        <script>
+        $(document).ready(function() {
+            const navbar = $(".categories-navbar");
+            const categoriesList = navbar.find(".navbar-nav");
+            const moveBackward = navbar.find(".move-backward");
+            const moveForward = navbar.find(".move-forward");
+            const scrollStep = 200; // Adjust as needed
+            let scrollAmount = 0;
+        
+            moveBackward.click(function() {
+                scrollAmount -= scrollStep;
+                categoriesList.animate({ scrollLeft: scrollAmount }, "slow");
+            });
+        
+            moveForward.click(function() {
+                scrollAmount += scrollStep;
+                categoriesList.animate({ scrollLeft: scrollAmount }, "slow");
+            });
+        });
+        </script>
+        <script>
+            const navbar = document.querySelector(".categories-navbar");
+            const categoriesList = navbar.querySelector(".navbar-nav");
+            const overflowContainer = navbar.querySelector(".overflow-container");
+            const moveBackward = navbar.querySelector(".move-backward");
+            const moveForward = navbar.querySelector(".move-forward");
+            let scrollAmount = 0;
+            const scrollStep = 200; // Adjust as needed
+            
+            moveBackward.addEventListener("click", function() {
+                scrollAmount -= scrollStep;
+                if (scrollAmount < 0) {
+                    scrollAmount = 0;
+                }
+                overflowContainer.scrollLeft = scrollAmount;
+            });
+            
+            moveForward.addEventListener("click", function() {
+                scrollAmount += scrollStep;
+                overflowContainer.scrollLeft = scrollAmount;
+            });
+            </script>
+            <script>
+                console.log('chamei aqui')
+                const menuToggle = document.querySelector('.navbar_cat');
+                const menuList = document.querySelector('.menu_cat');
+
+                menuToggle.addEventListener('click', () => {
+                    menuList.classList.toggle('active');
+            });
+            </script>
+            <script>
+                var swiper = new Swiper('.swiper-container', {
+                slidesPerView: 1, // Número de slides visíveis por vez
+                spaceBetween: 20, // Espaço entre os slides
+                loop: true, // Carrossel infinito
+                navigation: {
+                    nextEl: '.swiper-button-next', // Botão de próxima
+                    prevEl: '.swiper-button-prev', // Botão de anterior
+                },
+                });
+            </script>
+            <script>
+                document.querySelector('.left').addEventListener('click', scrollLeft);
+                document.querySelector('.right').addEventListener('click', scrollRight);
+
+                function scrollLeft() {
+                    const categoryList = document.querySelector('.category-list');
+                    categoryList.scrollBy({ left: -200, behavior: 'smooth' });
+                }
+
+                function scrollRight() {
+                    const categoryList = document.querySelector('.category-list');
+                    categoryList.scrollBy({ left: 200, behavior: 'smooth' });
+                }
+            </script>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+    </body>
+</html>

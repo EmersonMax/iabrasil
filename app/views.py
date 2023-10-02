@@ -1,15 +1,56 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Ferramentas
 from django.core.paginator import Paginator
 import pandas as pd
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
+from .forms import CustomUserCreationForm 
+from django.contrib.auth.models import User
 # Create your views here.
 
 
-def cumprimentar(request):
-    return HttpResponse("Oi, Django! Este é o meu primeiro projeto.")
+
+def login_view(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+        user = authenticate(request, username=email, password=password)  # Use o email como nome de usuário
+
+        if user is not None:
+            login(request, user)
+            # Redirecionar para uma página após o login bem-sucedido
+            return redirect('home')
+        else:
+            messages.error(request, 'Credenciais inválidas. Tente novamente.')
+
+    return render(request, 'login.html')
+
+  
+def logout_view(request):
+    logout(request)
+    # Redirecionar para uma página após o logout
+    return redirect('home')
+
+def signup_view(request):
+    if request.method == "POST":
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+
+            # Verifica se o campo "username" está vazio e gera um nome de usuário se necessário
+            if not user.username:
+                user.username = f"{form.cleaned_data['first_name']}_{form.cleaned_data['last_name']}"
+
+            user.save()
+            login(request, user)
+            return redirect("home")  # Redirecione para a página desejada após o registro
+    else:
+        form = CustomUserCreationForm()
+    
+    return render(request, 'signup.html', {'form': form})
 
 def home(request):
    

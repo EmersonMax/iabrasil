@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser,  Group, Permission
 
 # Create your models here.
 class Ferramentas(models.Model):
@@ -30,3 +31,10 @@ class Ferramentas(models.Model):
     
     def _str_(self):
         return self.nome_ferramenta
+    
+class CustomUser(AbstractUser):
+    email = models.EmailField(unique=True)
+    # Adicione o related_name nas relações reversas
+    groups = models.ManyToManyField(Group, related_name='customuser_set')
+    user_permissions = models.ManyToManyField(Permission, related_name='customuser_set')
+# Adicione o related_name para as relações reversas

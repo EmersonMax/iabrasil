@@ -1,48 +1,130 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="row">
-    {% for ferramenta in page_ferramentas %}
-    <div class="col mb-5">
-        <div class="card h-100">
-            <!-- Sale badge-->
-            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">{{ferramenta.categoria}}</div>
-            <!-- Product image-->
-            <img class="card-img-top" src="{{ferramenta.foto_url_1}}" alt="..." />
-            <!-- Product details-->
-            <div class="card-body p-4">
-                <div class="text-center">
-                    <!-- Product name-->
-                    <h5 class="fw-bolder">{{ferramenta.nome_ferramenta}}</h5>
-                    <!-- Product reviews-->
-                    <div class="d-flex justify-content-center small mb-2">
-                    <div class="" style="margin-left: -10px;font-size: 18px;"> {{ferramenta.curtidas}} </div>
-                    <div style="margin-left: 10px;font-size: 18px;"> <i class="fa-regular fa-thumbs-up"> </i></div>
-                    <div style="margin-left: 10px;font-size: 18px;"><i class="fa-regular fa-thumbs-down"></i></div>
-                   </div>
-                    <!-- Product price-->
-                    <span class="">{{ferramenta.descricao_curta}}</span>
-                    
-                </div>
-            </div>
-            <!-- Product actions-->
-            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'ferramenta_detail' ferramenta.id %}">Saiba Mais!</a></div>
-            </div>
-        </div>
+<style>
+.custom-table {
+    border: 0px;
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    background-color: #061621; /* Cor de fundo mais escura */
+}
+
+.custom-table th, .custom-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: none; /* Remover borda inferior */
+    color: #fff; /* Texto branco */
+}
+
+/* Estilos alternados para linhas */
+.custom-table tbody tr:nth-child(even) {
+    background-color: transparent; /* Remover cor de fundo alternada */
+}
+
+/* Estilos para a imagem e informações do item */
+.item-details {
+    display: flex;
+    align-items: center;
+}
+
+.item-image-container {
+    margin-right: 10px;
+}
+
+.item-image {
+    max-width: 100px; /* Tamanho máximo da imagem */
+    border-radius: 5px; /* Bordas arredondadas */
+}
+
+.item-info h3 {
+    font-size: 18px; /* Tamanho da fonte para o título */
+    margin-bottom: 5px;
+    color:white;
+}
+.item-info h5 {
+    font-size: 16px; /* Tamanho da fonte para o título */
+    margin-bottom: 5px;
+    color:#ccc;
+   }
+
+/* Estilos para as informações de curtidas e preço */
+.likes-info {
+    font-size: 14px; /* Tamanho da fonte para informações de curtidas e preço */
+    color: #ccc; /* Texto mais claro */
+}
+
+/* Tamanho máximo da imagem em telas menores que 768px (telas móveis) */
+@media screen and (max-width: 768px) {
+    .item-image {
+        max-width: 100px;
+    }
+    .item-info h3 {
+    font-size: 12px; /* Tamanho da fonte para o título */
+    margin-bottom: 5px;
+    color:white;
+    }
+    .item-info h5 {
+    font-size: 10px; /* Tamanho da fonte para o título */
+    margin-bottom: 5px;
+    color:#ccc;
+   }
+}
+
+/* Tamanho máximo da imagem em telas maiores que 768px (telas maiores) */
+@media screen and (min-width: 769px) {
+    .item-image {
+        max-width: 200px;
+    }
+}
+
+.custom-table td:hover {
+    transform: scale(1.05); /* Aumentar em 5% quando o mouse passar sobre */
+    transition: transform 0.3s ease; /* Adicionar uma transição suave */
+}
+
+</style>
+
+
+<div class="container-show" style="margin-top: -60px;">
+    <div class="left-show"> 
+        <table class="custom-table">
+            <tbody>
+                {% for ferramenta in page_ferramentas %}
+                
+                <tr>
+                    <td>
+                        <div class="item-details">
+                            <div class="item-image-container">
+                                <img src="{{ferramenta.foto_url_1}}" alt="..." class="item-image">
+                              
+                               
+                            </div>
+                            <div class="item-info">
+                                <h3>{{ferramenta.nome_ferramenta}}</h3>
+                                <h5>{{ferramenta.descricao_curta}}</h5>
+                              
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="likes-info">
+                            <i class="fa-regular fa-thumbs-up" style="font-size: 18px;"></i> <span class="likes-count">{{ferramenta.curtidas}}</span> 
+                            <br>
+                            <i class="fa-solid fa-coins" style="font-size: 18px;"></i> Gratuito
+                        </div>
+                    </td>
+                </tr>
+              {%endfor%}
+                <!-- Adicione mais linhas conforme necessário -->
+            </tbody>
+        </table>
+        
+    
+    
     </div>
-    {% endfor %}
+    
+   
 </div>
 
-<div class="d-flex justify-content-center">
-    <ul class="pagination">
-        {% if page_ferramentas.has_previous %}
-            <li class="page-item"><a class="page-link" href="?page={{ page_ferramentas.previous_page_number }}">Anterior</a></li>
-        {% endif %}
-        <li class="page-item disabled"><span class="page-link">Página {{ page_ferramentas.number }} de {{ page_ferramentas.paginator.num_pages }}</span></li>
-        {% if page_ferramentas.has_next %}
-            <li class="page-item"><a class="page-link" href="?page={{ page_ferramentas.next_page_number }}">Próxima</a></li>
-        {% endif %}
-    </ul>
-</div>
 {% endblock %}
